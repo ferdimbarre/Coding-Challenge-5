@@ -5,3 +5,25 @@ const inventory = [
     { name: 'Cappuccino', price: 4, quantity: 6 },
     { name: 'Mocha', price: 5, quantity: 4 }
 ];
+
+// create empty ordrs array
+const orders = []
+// push items inside:
+orders.push (
+    {
+        customerName: "Lisa Rhodes",
+        items: { itemName : "Latte" ,
+            itemQuantity : 2 },
+            status: "Complete"
+    }, 
+    {
+        customerName: "Max", 
+        items: { itemName: "Espresso", quantity: 1
+        }, status: "Pending"
+    }
+);
+
+
+
+
+
