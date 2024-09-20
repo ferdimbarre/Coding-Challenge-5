@@ -44,14 +44,21 @@ function placeOrder (customerName, itemOrdered) {
 
 function calculateOrderTotal(itemOrdered) {
     return itemOrdered.reduce((total, currentItem) => {
-        let productInventory = inventory.find(product => product.name === currentItem.itemName);
+        let productInventory = inventory.find(product => product.name === currentItem.itemName); //find the product 
         if (productInventory) {
-            return total + (currentItem.itemQuantity * productInventory.price);
+            return total + (currentItem.itemQuantity * productInventory.price); //if found, calculate total price
         }
         return total;
-    }, 0); // Initialize total to 0
+    }, 0); 
 }
 
+// Create a Function to Mark an Order as Completed
 
-
-
+function completeOrder (customerName, orders) {
+let customerOrder = orders.find(order => order.customerName === customerName) // find the order of the customer
+if (customerOrder) {
+    customerOrder.status = "Complete" //if order found
+} else {console.log("Error: order not found") //if order not found
+}
+return completeOrder
+};  
