@@ -7,7 +7,7 @@ const inventory = [
 ];
 
 // create empty ordrs array
-const orders = []
+const orders = []; // this just creates an empty array in which I will use push to isnert order details 
 // push items inside:
 orders.push (
     {
@@ -21,9 +21,24 @@ orders.push (
         items: { itemName: "Espresso", quantity: 1
         }, status: "Pending"
     }
-);
+); // 2 example orders to initialize the array
 
-
+//place order function
+function placeOrder (customerName, itemOrdered) {
+    let productInventory = inventory.find(product => product.name === itemOrdered.itemName) //looks to see if ordered product is part of offered products 
+    if (productInventory && productInventory.quantity >=itemOrdered.itemQuantity) { // 1st condition is to make sure product exists, second is to check if it is in stock
+        console.log(productInventory.quantity -= itemOrdered.itemQuantity); // updates inventory
+        
+        orders.push ({ customerName : customerName , //inserts order within order array
+            items: {itemName: itemOrdered.itemName,
+                itemQuantity: itemOrdered.itemQuantity },
+            status: "Pending"
+        });
+    } else {
+        console.log("Order could not be placed, insufficient stock"); //error message to show up if not in stock or if product is not found (does not exist within menu)
+    } }; 
+    // place order;
+    placeOrder('Isabella Keeble', { itemName: 'Latte', itemQuantity: 1 }); // example order. Expected output is the updated inventory with one less inventory for Lattes and the order details with status pending
 
 
 
