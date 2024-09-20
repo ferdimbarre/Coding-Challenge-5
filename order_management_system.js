@@ -40,5 +40,18 @@ function placeOrder (customerName, itemOrdered) {
     // place order;
     placeOrder('Isabella Keeble', { itemName: 'Latte', itemQuantity: 1 }); // example order. Expected output is the updated inventory with one less inventory for Lattes and the order details with status pending
 
+// Create a Function to Calculate Total for an Order
+
+function calculateOrderTotal(itemOrdered) {
+    return itemOrdered.reduce((total, currentItem) => {
+        let productInventory = inventory.find(product => product.name === currentItem.itemName);
+        if (productInventory) {
+            return total + (currentItem.itemQuantity * productInventory.price);
+        }
+        return total;
+    }, 0); // Initialize total to 0
+}
+
+
 
 
